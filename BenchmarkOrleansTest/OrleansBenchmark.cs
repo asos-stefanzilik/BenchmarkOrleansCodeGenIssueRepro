@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Orleans;
+using Orleans.Hosting;
 
 namespace BenchmarkOrleansTest
 {
@@ -23,6 +25,8 @@ namespace BenchmarkOrleansTest
                    siloBuilder.UseLocalhostClustering();
                })
                .Build();
+
+            this.host.Start();
 
             this.grainFactory = host.Services.GetRequiredService<IGrainFactory>();
         }
